@@ -29,15 +29,14 @@ function startTimer() {
             }
         }, 1000);
         isRunning = true;
-        startBtn.disabled = true;
-        stopResetBtn.textContent = 'Stop';
+        startBtn.textContent = 'Stop';
     }
 }
 
 function stopTimer() {
     clearInterval(timer);
     isRunning = false;
-    stopResetBtn.textContent = 'Reset';
+    startBtn.textContent = 'Start';
 }
 
 function resetTimer() {
@@ -45,8 +44,7 @@ function resetTimer() {
     isRunning = false;
     currentTimer = studyTime;
     updateTimerDisplay();
-    startBtn.disabled = false;
-    stopResetBtn.textContent = 'Stop';
+    startBtn.textContent = 'Start';
 }
 
 function notifyUser() {
@@ -59,7 +57,14 @@ function toggleTheme() {
     emoji.textContent = isDarkMode ? '🌜' : '🌞'; // Change emoji based on mode
 }
 
-startBtn.addEventListener('click', startTimer);
+startBtn.addEventListener('click', () => {
+    if (isRunning) {
+        stopTimer();
+    } else {
+        startTimer();
+    }
+});
+
 stopResetBtn.addEventListener('click', () => {
     if (isRunning) {
         stopTimer();
