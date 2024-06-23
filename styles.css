@@ -3,61 +3,24 @@ body {
     background-color: #222831; /* Dark mode background */
     color: #EEEEEE; /* Dark mode text */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
 
-.container {
-    text-align: center;
-}
-
-.main-content {
+.navbar {
+    width: 100%;
+    background-color: #222831; /* Dark mode background for navbar */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #31363F; /* Dark mode card background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: none;
-}
-
-.timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#timer-display {
-    font-size: 48px;
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-
-.timer-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.timer-buttons button {
-    background-color: #76ABAE; /* Dark mode button background */
-    color: #222831; /* Dark mode button text */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.timer-buttons button:hover {
-    background-color: #EEEEEE; /* Dark mode button hover */
-    color: #222831;
+    justify-content: flex-end; /* Align items to the right */
+    padding: 10px 20px; /* Adjust padding as needed */
+    box-sizing: border-box;
 }
 
 .theme-toggle-container {
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .theme-toggle {
@@ -107,7 +70,7 @@ body {
 }
 
 input:checked + .slider {
-    background-color: #EEEEEE; /* Dark mode slider background when checked */
+    background-color: #ffffff; /* Dark mode slider background when checked */
 }
 
 input:checked + .slider:before {
@@ -119,36 +82,83 @@ input:checked + .slider + .emoji {
     transform: translate(28px, -56%);
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px; /* Adjust the gap between timer and container */
+    width: 100%; /* Full width of the container */
+    margin: auto; /* Adjust top margin as needed */
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #31363F; /* Dark mode card background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: none;
+    width: 400px; /* Half of the container */
+    height: 250px;
+    margin-top: -30px; /* Pushes content to the top */
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Full width of the main-content */
+}
+
+#timer-display {
+    font-size: 70px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    text-align: center; /* Center timer display */
+    
+}
+
+.timer-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.timer-buttons button {
+    background-color: #76ABAE; /* Dark mode button background */
+    color: #222831; /* Dark mode button text */
+    border: none;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.timer-buttons button:hover {
+    background-color: #EEEEEE; /* Dark mode button hover */
+    color: #222831;
+}
+
 .light-mode {
     background-color: #B3C8CF; /* Light mode background */
     color: #222831; /* Light mode text */
 }
 
 .light-mode .main-content {
-    background-color: #BED7DC; /* Light mode card background */
+    background-color: #ffffff ; /* Light mode card background */
 }
 
 .light-mode .timer-buttons button {
-    background-color: #F1EEDC; /* Light mode button background */
+    background-color: #BED7DC; /* Light mode button background */
     color: #222831; /* Light mode button text */
 }
 
 .light-mode .timer-buttons button:hover {
     background-color: #E5DDC5; /* Light mode button hover */
-}
-
-.light-mode .slider {
-    background-color: #F1EEDC; /* Light mode slider background */
-}
-
-.light-mode .slider:before {
-    background-color: #222831; /* Light mode slider handle */
-}
-
-.light-mode input:checked + .slider {
-    background-color: #E5DDC5; /* Light mode slider background when checked */
-}
-
-.light-mode input:checked + .slider:before {
-    background-color: #222831; /* Light mode slider handle when checked */
 }
