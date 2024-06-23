@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="pomodoro">
+    <div class="container">
         <h1>Pomodoro Timer</h1>
-        <div id="timer">
-            <span id="minutes">25</span>:<span id="seconds">00</span>
+        <div class="main-content">
+            <div class="timer">
+                <h2 id="timer-display">25:00</h2>
+                <div class="timer-buttons">
+                    <button id="start-btn">Start</button>
+                    <button id="stop-reset-btn">Stop</button>
+                </div>
+            </div>
         </div>
-        <div class="controls">
-            <button id="start">Start</button>
-            <button id="reset">Reset</button>
+        <div class="theme-toggle-container">
+            <label class="theme-toggle">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+                <span class="emoji" id="emoji">🌜</span> <!-- Default moon emoji for dark mode -->
+            </label>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
