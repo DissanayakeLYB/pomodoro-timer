@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pomodoro Timer</h1>
-        <div class="main-content">
-            <div class="timer">
-                <h2 id="timer-display">25:00</h2>
-                <div class="timer-buttons">
-                    <button id="start-btn">Start</button>
-                    <button id="stop-reset-btn">Stop</button>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar">
         <div class="theme-toggle-container">
             <label class="theme-toggle">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider"></span>
                 <span class="emoji" id="emoji">🌜</span> <!-- Default moon emoji for dark mode -->
             </label>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="timer">
+                <h1>Pomodoro Timer</h1>
+                <h2 id="timer-display">25:00</h2>
+                <div class="timer-buttons">
+                    <button id="start-btn">Start</button>
+                    <button id="stop-reset-btn">Reset</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
