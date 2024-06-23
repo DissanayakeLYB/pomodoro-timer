@@ -1,36 +1,154 @@
 body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #222831; /* Dark mode background */
+    color: #EEEEEE; /* Dark mode text */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    margin: 0;
 }
 
-.pomodoro {
+.container {
     text-align: center;
-    background-color: white;
-    padding: 2em;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #31363F; /* Dark mode card background */
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
-#timer {
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timer-display {
     font-size: 48px;
-    margin: 20px 0;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
-.controls button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 5px;
+.timer-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.timer-buttons button {
+    background-color: #76ABAE; /* Dark mode button background */
+    color: #222831; /* Dark mode button text */
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-.controls button:hover {
-    background-color: #0056b3;
+.timer-buttons button:hover {
+    background-color: #EEEEEE; /* Dark mode button hover */
+    color: #222831;
+}
+
+.theme-toggle-container {
+    margin-top: 20px;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #76ABAE; /* Dark mode slider background */
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #222831; /* Dark mode slider handle */
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.emoji {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-56%);
+    font-size: 15px;
+    transition: transform 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #EEEEEE; /* Dark mode slider background when checked */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: #222831; /* Dark mode slider handle when checked */
+}
+
+input:checked + .slider + .emoji {
+    transform: translate(28px, -56%);
+}
+
+.light-mode {
+    background-color: #B3C8CF; /* Light mode background */
+    color: #222831; /* Light mode text */
+}
+
+.light-mode .main-content {
+    background-color: #BED7DC; /* Light mode card background */
+}
+
+.light-mode .timer-buttons button {
+    background-color: #F1EEDC; /* Light mode button background */
+    color: #222831; /* Light mode button text */
+}
+
+.light-mode .timer-buttons button:hover {
+    background-color: #E5DDC5; /* Light mode button hover */
+}
+
+.light-mode .slider {
+    background-color: #F1EEDC; /* Light mode slider background */
+}
+
+.light-mode .slider:before {
+    background-color: #222831; /* Light mode slider handle */
+}
+
+.light-mode input:checked + .slider {
+    background-color: #E5DDC5; /* Light mode slider background when checked */
+}
+
+.light-mode input:checked + .slider:before {
+    background-color: #222831; /* Light mode slider handle when checked */
 }
