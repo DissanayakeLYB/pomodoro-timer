@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Timer</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
 <body>
-    <nav class="navbar">
-        <div class="theme-toggle-container">
-            <label class="theme-toggle">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider"></span>
-                <span class="emoji" id="emoji">🌜</span> <!-- Default moon emoji for dark mode -->
-            </label>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="main-content">
-            <div class="timer">
-                <h1>Pomodoro Timer</h1>
-                <h2 id="timer-display">25:00</h2>
-                <div class="timer-buttons">
-                    <button id="start-btn">Start</button>
-                    <button id="stop-reset-btn">Reset</button>
-                </div>
-            </div>
-        </div>
+  <div class="timer-container">
+    <div class="timer-display">
+      <span>
+        <div class="arrow up-arrow" onclick="incrementHour()">&#8593;</div>
+        <span id="hour">00</span>
+        <div class="arrow down-arrow" onclick="decrementHour()">&#8595;</div>
+      </span>
+      <span>:</span>
+      <span>
+        <div class="arrow up-arrow" onclick="incrementMinute()">&#8593;</div>
+        <span id="minute">00</span>
+        <div class="arrow down-arrow" onclick="decrementMinute()">&#8595;</div>
+      </span>
+      <span>:</span>
+      <span>
+        <div class="arrow up-arrow" onclick="incrementSecond()">&#8593;</div>
+        <span id="second">00</span>
+        <div class="arrow down-arrow" onclick="decrementSecond()">&#8595;</div>
+      </span>
     </div>
-    <script src="script.js"></script>
+
+    <div class="button-container">
+      <button class="button" id="startStop" onclick="startStopTimer()">Start</button>
+      <button class="button" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
