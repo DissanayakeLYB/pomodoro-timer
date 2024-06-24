@@ -1,78 +1,124 @@
-let timer;
-let isRunning = false;
-let studyTime = 25 * 60; // Default to 25 minutes
-let currentTimer = studyTime;
-let isDarkMode = true;
+let hour = 0;
+    let minute = 0;
+    let second = 0;
+    let timerInterval;
+    let isTimerRunning = false;
 
-const timerDisplay = document.getElementById('timer-display');
-const startBtn = document.getElementById('start-btn');
-const stopResetBtn = document.getElementById('stop-reset-btn');
-const themeToggleInput = document.getElementById('theme-toggle');
-const emoji = document.getElementById('emoji');
-
-function updateTimerDisplay() {
-    const minutes = Math.floor(currentTimer / 60);
-    const seconds = currentTimer % 60;
-    timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
-
-function startTimer() {
-    if (!isRunning) {
-        timer = setInterval(() => {
-            currentTimer--;
-            if (currentTimer < 0) {
-                clearInterval(timer);
-                notifyUser();
-                resetTimer();
-            } else {
-                updateTimerDisplay();
-            }
-        }, 1000);
-        isRunning = true;
-        startBtn.textContent = 'Stop';
+    function incrementHour() {
+      if (!isTimerRunning) {
+        hour = (hour + 1) % 24;
+        updateTimer();
+      }
     }
-}
 
-function stopTimer() {
-    clearInterval(timer);
-    isRunning = false;
-    startBtn.textContent = 'Start';
-}
+    function decrementHour() {
+      if (!isTimerRunning) {
+        hour = (hour - 1 + 24) % 24;
+        updateTimer();
+      }
+    }
 
-function resetTimer() {
-    clearInterval(timer);
-    isRunning = false;
-    currentTimer = studyTime;
-    updateTimerDisplay();
-    startBtn.textContent = 'Start';
-}
+    function incrementMinute() {
+      if (!isTimerRunning) {
+        minute = (minute + 1) % 60;
+        updateTimer();
+      }
+    }
 
-function notifyUser() {
-    alert('Time is up!');
-}
+    function decrementMinute() {
+      if (!isTimerRunning) {
+        minute = (minute - 1 + 60) % 60;
+        updateTimer();
+      }
+    }
 
-function toggleTheme() {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle('light-mode', !isDarkMode);
-    emoji.textContent = isDarkMode ? '🌜' : '🌞'; // Change emoji based on mode
-}
+    function incrementSecond() {
+      if (!isTimerRunning) {
+        second = (second + 1) % 60;
+        updateTimer();
+      }
+    }
 
-startBtn.addEventListener('click', () => {
-    if (isRunning) {
+    function decrementSecond() {
+      if (!isTimerRunning) {
+        second = (second - 1 + 60) % 60;
+        updateTimer();
+      }
+    }
+
+    function updateTimer() {
+      document.getElementById("hour").textContent = String(hour).padStart(2, '0');
+      document.getElementById("minute").textContent = String(minute).padStart(2, '0');
+      document.getElementById("second").textContent = String(second).padStart(2, '0');
+    }
+
+    function startStopTimer() {
+      if (isTimerRunning) {
         stopTimer();
-    } else {
+        document.getElementById("startStop").textContent = "Start";
+      } else {
         startTimer();
+        document.getElementById("startStop").textContent = "Stop";
+      }
+      isTimerRunning = !isTimerRunning;
     }
-});
 
-stopResetBtn.addEventListener('click', () => {
-    if (isRunning) {
-        stopTimer();
-    } else {
-        resetTimer();
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        second--;
+        if (second < 0) {
+          second = 59;
+          minute--;
+          if (minute < 0) {
+            minute = 59;
+            hour--;
+            if (hour < 0) {
+              stopTimer();
+              // Add alarm sound or other functionality here
+            }
+          }
+        }
+        updateTimer();
+      }, 1000);
     }
-});
 
-themeToggleInput.addEventListener('change', toggleTheme);
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
 
-updateTimerDisplay();
+    function resetTimer() {
+      stopTimer();
+      hour = 0;
+      minute = 0;
+      second = 0;
+      updateTimer();
+      document.getElementById("startStop").textContent = "Start";
+      isTimerRunning = false;
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+          second--;
+          if (second < 0) {
+            second = 59;
+            minute--;
+            if (minute < 0) {
+              minute = 59;
+              hour--;
+              if (hour < 0) {
+                hour = 0;
+                minute = 0;
+                second = 0;
+                stopTimer();
+                playAlarmSound();
+              }
+            }
+          }
+          updateTimer();
+        }, 1000);
+      }
+      
+      function playAlarmSound() {
+        const alarmSound = new Audio('path/to/alarm-sound.mp3');
+        alarmSound.play();
+      }
