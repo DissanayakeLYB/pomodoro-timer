@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#timer-background{
+    width: 100vw;
+    height: 100vh;
+    display: flex;  
+    flex-wrap: wrap;
+}
+
+/* button{
+    margin: 10vw;
+} */
